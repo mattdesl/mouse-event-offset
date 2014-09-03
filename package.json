@@ -4,12 +4,13 @@
   "description": "get relative position from an event",
   "main": "index.js",
   "license": "MIT",
-  "author": {
-    "name": "Matt DesLauriers",
-    "email": "dave.des@gmail.com"
-  },
+  "author": "Matt DesLauriers <dave.des@gmail.com>",
   "dependencies": {},
   "devDependencies": {
+    "dom-events": "^0.1.1",
+    "dom-style": "0.0.3",
+    "domready": "^1.0.6",
+    "simulate-event": "0.0.3",
     "tape": "~2.13.2"
   },
   "scripts": {
@@ -35,5 +36,21 @@
   "homepage": "https://github.com/mattdesl/mouse-event-offset",
   "bugs": {
     "url": "https://github.com/mattdesl/mouse-event-offset/issues"
-  }
+  },
+  "keywords": [
+    "mouse",
+    "event",
+    "offset",
+    "top",
+    "left",
+    "corner",
+    "clientX",
+    "clientY",
+    "offsetX",
+    "offsetY",
+    "getBoundingClientRect",
+    "click",
+    "relative",
+    "position"
+  ]
 }
