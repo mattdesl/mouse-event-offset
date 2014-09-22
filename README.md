@@ -21,7 +21,7 @@ events.on(element, 'click', function(e) {
 
 Pass an event object to the function, and a position with `{ x, y }` is returned. The options:
 
-- `rect` is a pre-computed bounding client rect (e.g. to avoid reflows), defaults to use the target's `getBoundingClientRect()`
+- `clientRect` is a pre-computed bounding client rect (e.g. to avoid reflows), defaults to use the target's `getBoundingClientRect()`
 - `clientX` is the client x position, defaults to `event.clientX`
 - `clientY` is the client y position, defaults to `event.clientY`
 
