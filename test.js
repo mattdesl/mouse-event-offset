@@ -14,7 +14,9 @@ domready(function() {
         background: 'red',
         margin: '0',
         display: 'block',
-        padding: '0'
+        padding: '25px',
+        left: '50px',
+        position: 'absolute'
     })
 
     style(document.body, {
@@ -24,12 +26,15 @@ domready(function() {
 
     document.body.appendChild(div)
 
-
+    var child = document.createElement("div")
+    child.innerText = 'foobar'
+    div.appendChild(child)
     
-    // events.on(div, 'click', function(ev) {
-    //     console.log(ev.clientX, ev.clientY)
-    //     console.log(ev.shiftKey)
-    // })
+    events.on(div, 'mousemove', function(ev) {
+        console.log(offset(ev))
+        //console.log(ev.clientX, ev.clientY)
+        // console.log(ev.shiftKey)
+    })
 
     // simulate(div, 'click', { clientX: 10, shiftKey: true })
 
