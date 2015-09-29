@@ -27,7 +27,7 @@ You can also specifiy `out` to store the position in that array, and avoid creat
 ## Changelog
 
 - `3.x` new version; simpler API, less assumptions, avoids GC thrashing
-- `2.x uses `ev.currentTarget` instead of `ev.target`
+- `2.x` uses `ev.currentTarget` instead of `ev.target`
 - `1.x` simple implementation using `ev.target || ev.srcElement`
 
 ## License
