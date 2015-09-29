@@ -7,10 +7,6 @@
   "author": "Matt DesLauriers <dave.des@gmail.com>",
   "dependencies": {},
   "devDependencies": {
-    "dom-events": "^0.1.1",
-    "dom-style": "0.0.3",
-    "domready": "^1.0.6",
-    "simulate-event": "0.0.3",
     "tape": "~2.13.2"
   },
   "scripts": {
