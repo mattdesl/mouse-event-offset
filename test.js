@@ -1,41 +1,30 @@
-var test = require('tape').test
-var domready = require('domready')
-var style = require('dom-style')
-var events = require('dom-events')
+// stub defaults
+global.window = {}
+global.document = { body: {} }
+
+var test = require('tape')
 var offset = require('./')
-var simulate = require('simulate-event')
 
+test('should provide mouse offset', function (t) {
+  var off = offset({ clientX: 5, clientY: 3 }, elementStub())
+  t.deepEqual(off, [ 1.5, 0.5 ], 'uses element client rect')
 
-domready(function() {
-    var div = document.createElement("div")
-    style(div, {
-        width: '64px',
-        height: '64px',
-        background: 'red',
-        margin: '0',
-        display: 'block',
-        padding: '25px',
-        left: '50px',
-        position: 'absolute'
-    })
+  off = offset({ clientX: 5, clientY: 3 }, global.window)
+  t.deepEqual(off, [ 5, 3 ], 'uses window global')
 
-    style(document.body, {
-        margin: '5px',
-        padding: '0px'
-    })
+  off = offset({ clientX: 5, clientY: 3, currentTarget: elementStub() })
+  t.deepEqual(off, [ 1.5, 0.5 ], 'defaults to currentTarget')
 
-    document.body.appendChild(div)
+  off = []
+  var result = offset({ clientX: 5, clientY: 3 }, global.window, off)
+  t.equal(off, result, 'does not create array when one is specified')
+  t.end()
 
-    var child = document.createElement("div")
-    child.innerText = 'foobar'
-    div.appendChild(child)
-    
-    events.on(div, 'mousemove', function(ev) {
-        console.log(offset(ev))
-        //console.log(ev.clientX, ev.clientY)
-        // console.log(ev.shiftKey)
-    })
-
-    // simulate(div, 'click', { clientX: 10, shiftKey: true })
-
+  function elementStub () {
+    return {
+      getBoundingClientRect: function () {
+        return { left: 3.5, top: 2.5 }
+      }
+    }
+  }
 })

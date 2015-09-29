@@ -2,28 +2,35 @@
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-Gets the offsetX/offsetY from a mouse event, relative to the top left of the target (i.e. clicked) element. This uses `currentTarget` (i.e. the element that you specified for the event) and falls back to `srcElement`.
+Computes the `[ offsetX, offsetY ]` from a mouse or touch event, relative to the top left of the `target` element.
 
 ```js 
 var offset = require('mouse-event-offset')
-var events = require('dom-events')
 
-events.on(element, 'click', function(e) {
-	var pos = offset(e)
-	console.log(pos.x, pos.y)
+window.addEventListener('touchstart', function (ev) {
+  var target = ev.currentTarget
+  var touch = ev.changedTouches[0]
+  var pos = offset(touch, target)
+  //=> [ 128, 52 ]
 })
 ```
 ## Usage
 
 [![NPM](https://nodei.co/npm/mouse-event-offset.png)](https://nodei.co/npm/mouse-event-offset/)
 
-### `offset(event[, options])`
+### `position = offset(event, [target], [out])`
 
-Pass an event object to the function, and a position with `{ x, y }` is returned. The options:
+Pass a MouseEvent or TouchEvent as `event`. 
 
-- `clientRect` is a pre-computed bounding client rect or offset (e.g. to avoid reflows), defaults to use the target's `getBoundingClientRect()` (or offset `(0, 0)` in the case of window/body)
-- `clientX` is the client x position, defaults to `event.clientX`
-- `clientY` is the client y position, defaults to `event.clientY`
+Optionally, you can specify a `target` element which the touch event should be relative to. Defaults to `event.currentTarget`, falling back to `event.srcElement` for older IE.
+
+You can also specifiy `out` to store the position in that array, and avoid creating a new one.
+
+## Changelog
+
+- 3.0: new version; simpler API, less assumptions, avoids GC thrashing
+- 2.0: uses `ev.currentTarget` instead of `ev.target`
+- 1.0: simple implementation using `ev.target || ev.srcElement`
 
 ## License
 
