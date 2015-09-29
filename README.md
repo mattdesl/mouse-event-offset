@@ -1,6 +1,6 @@
 # mouse-event-offset
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
 Computes the `[ offsetX, offsetY ]` from a mouse or touch event, relative to the top left of the `target` element.
 
@@ -16,8 +16,6 @@ window.addEventListener('touchstart', function (ev) {
 ```
 ## Usage
 
-[![NPM](https://nodei.co/npm/mouse-event-offset.png)](https://nodei.co/npm/mouse-event-offset/)
-
 ### `position = offset(event, [target], [out])`
 
 Pass a MouseEvent or TouchEvent as `event`. 
@@ -28,9 +26,9 @@ You can also specifiy `out` to store the position in that array, and avoid creat
 
 ## Changelog
 
-- 3.0: new version; simpler API, less assumptions, avoids GC thrashing
-- 2.0: uses `ev.currentTarget` instead of `ev.target`
-- 1.0: simple implementation using `ev.target || ev.srcElement`
+- `3.x` new version; simpler API, less assumptions, avoids GC thrashing
+- `2.x uses `ev.currentTarget` instead of `ev.target`
+- `1.x` simple implementation using `ev.target || ev.srcElement`
 
 ## License
 

@@ -16,8 +16,8 @@ function mouseEventOffset (ev, target, out) {
 
 function getBoundingClientOffset (element) {
   if (element === window ||
-    element === document ||
-    element === document.body) {
+      element === document ||
+      element === document.body) {
     return rootPosition
   } else {
     return element.getBoundingClientRect()
