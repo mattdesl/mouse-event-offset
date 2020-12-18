@@ -3,10 +3,12 @@
   "version": "3.0.2",
   "description": "get relative position from an event",
   "main": "index.js",
+  "typings": "index.d.ts",
   "license": "MIT",
   "author": "Matt DesLauriers <dave.des@gmail.com>",
   "dependencies": {},
   "devDependencies": {
+    "@types/react": "^17.0.0",
     "tape": "~2.13.2"
   },
   "scripts": {
